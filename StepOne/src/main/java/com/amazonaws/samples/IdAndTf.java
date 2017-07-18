@@ -8,6 +8,11 @@ import org.apache.hadoop.io.Writable;
 
 public class IdAndTf implements Writable, Comparable<IdAndTf>{
 	
+	@Override
+	public String toString() {
+		return "IdAndTf [id=" + id + ", tf=" + tf + "]";
+	}
+
 	private String id;
 	public String getId() {
 		return id;

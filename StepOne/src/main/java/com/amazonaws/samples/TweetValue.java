@@ -9,21 +9,37 @@ import org.apache.hadoop.io.Writable;
 public class TweetValue implements Writable {    
     private String userName;
     private String text;
-	private long favorited;
-	private long retweeted;
+	private boolean favorited;
+	private boolean retweeted;
 
-    public void write(DataOutput out) throws IOException {
+	
+    public TweetValue() {
+		this.userName = null;
+		this.text = null;
+		this.favorited = false;
+		this.retweeted = false;	
+		}
+
+	public TweetValue(String userName, String text, boolean favorited, boolean retweeted) {
+		super();
+		this.userName = userName;
+		this.text = text;
+		this.favorited = favorited;
+		this.retweeted = retweeted;
+	}
+
+	public void write(DataOutput out) throws IOException {
       out.writeUTF(userName);
       out.writeUTF(text);
-      out.writeLong(favorited);
-      out.writeLong(retweeted);
+      out.writeBoolean(favorited);
+      out.writeBoolean(retweeted);
     }
 
     public void readFields(DataInput in) throws IOException {
       userName = in.readUTF();
       text = in.readUTF();
-      favorited = in.readLong();
-      retweeted = in.readLong();
+      favorited = in.readBoolean();
+      retweeted = in.readBoolean();
     }
 
     public static TweetValue read(DataInput in) throws IOException {
@@ -48,19 +64,19 @@ public class TweetValue implements Writable {
 		this.text = text;
 	}
 
-	public long getFavorited() {
+	public boolean getFavorited() {
 		return favorited;
 	}
 
-	public void setFavorited(long favorited) {
+	public void setFavorited(boolean favorited) {
 		this.favorited = favorited;
 	}
 
-	public long getRetweeted() {
+	public boolean getRetweeted() {
 		return retweeted;
 	}
 
-	public void setRetweeted(long retweeted) {
+	public void setRetweeted(boolean retweeted) {
 		this.retweeted = retweeted;
 	}
   }

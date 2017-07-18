@@ -8,8 +8,8 @@ import org.apache.hadoop.io.Writable;
 
 public class TwoIdftf implements Writable {
 
-	double idftf1;
-	double idftf2;
+	Double idftf1;
+	Double idftf2;
 	
 	
 	
@@ -44,7 +44,10 @@ public class TwoIdftf implements Writable {
     }
 
 
-
+	@Override
+	public String toString() {
+		return "IDF-TF_1:" + this.idftf1.toString() + " IDF-TF_2:" + this.idftf1.toString() + "\n"; 
+	}
 		
 
 }

@@ -43,6 +43,13 @@ public class TwoIds implements Writable {
     	return w;
     }
 
+	@Override
+	public String toString() {
+		return "ID1:" + this.id1 + " ID2:" + this.id1 + "\n"; 
+	}
+    
+    
+
 
 
 	
